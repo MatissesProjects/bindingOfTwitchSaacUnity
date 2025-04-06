@@ -8,14 +8,16 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        IsDead();
+        CheckIsDead();
     }
 
-    private bool IsDead()
+    private void CheckIsDead()
     {
-        if (!(health <= 0)) return false;
+        if (health > 0) return;
         Debug.Log(gameObject.name + " is ded");
-        EventBus.Raise(new PlayerDead());
-        return true;
+        if (TryGetComponent(out Player p))
+            EventBus.Raise(new PlayerDead());
+        if (TryGetComponent(out Enemy enemy))
+            EventBus.Raise(new EnemyDead(enemy));
     }
 }

@@ -453,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.5
   _baseAttackDamage: 0.25
+  _attackCooldown: 0.5
 --- !u!114 &331928446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20029067d8c6f824a9528b99f4ee261e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walls: {fileID: 3440383552729053369, guid: 463f6e7b7fb39e14c8a6742c7ccb022c, type: 3}
+  wall: {fileID: 3440383552729053369, guid: 463f6e7b7fb39e14c8a6742c7ccb022c, type: 3}
 --- !u!114 &890110528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1147,7 @@ GameObject:
   - component: {fileID: 1378546128}
   - component: {fileID: 1378546123}
   - component: {fileID: 1378546127}
+  - component: {fileID: 1378546129}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1335,6 +1337,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27f7d14633da82e419b6dd5092586f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseAttackDamage: 0
+  attackCooldown: 0
+--- !u!114 &1378546129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378546121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b2a6533677eac4fa1829ee2b98a6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1470049150

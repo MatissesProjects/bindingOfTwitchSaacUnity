@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
+    [SerializeField] //
+    private float speed, baseAttackDamage, attackCooldown;
+
+    private float _nextAttackTime;
+
     private void Start()
     {
         EventBus.Subscribe<DamagePlayer>(OnDamagePlayer);
@@ -29,5 +34,20 @@ public class Player : MonoBehaviour
     private void OnDamagePlayer(DamagePlayer damagePlayer)
     {
         GetComponent<Health>().TakeDamage(damagePlayer.Damage);
+    }
+
+    public float GetDamage()
+    {
+        return baseAttackDamage;
+    }
+
+    public bool CanAttack()
+    {
+        return Time.time >= _nextAttackTime;
+    }
+
+    public void SetNextAttackTime()
+    {
+        _nextAttackTime = Time.time + attackCooldown;
     }
 }

@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
     private Vector2 _movement;
+    private Rigidbody2D rb;
     private bool triggeredStopMoved, triggeredPlayerMoved;
 
     private void Start()
@@ -13,14 +13,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         // Capture input
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("Fire1")) EventBus.Raise(new CanAttackEnemy());
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // Move the player
         if (_movement.magnitude > 0)
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
                 EventBus.Raise(new PlayerMoving());
                 triggeredPlayerMoved = true;
             }
+
             triggeredStopMoved = false;
         }
         else if (!triggeredStopMoved)

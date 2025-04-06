@@ -66,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 targetPos = _player.transform.position;
         var currentPos = _rb.position;
         var distance = Vector2.Distance(currentPos, targetPos);
-        Debug.Log(distance);
+        // Debug.Log(distance);
         if (distance > stopDistance)
         {
             // TODO find our movement path based on our enemy type - this will decide new direction and position mods
@@ -79,12 +79,8 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            // TODO attack?
-            Debug.Log("attacking time?");
-            // TODO only attack when we should, enemy attack cooldown check needed
             var enemy = GetComponent<Enemy>();
-            //enemy.GetAttackCooldown() // check if we should attack, then raise the event if we should
-            EventBus.Raise(new AttackingPlayer(enemy));
+            EventBus.Raise(new CanAttackPlayer(enemy));
         }
     }
 

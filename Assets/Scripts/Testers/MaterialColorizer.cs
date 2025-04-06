@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MaterialColorizer : MonoBehaviour
@@ -9,24 +8,13 @@ public class MaterialColorizer : MonoBehaviour
     private void Start()
     {
         _shader = GetComponent<Renderer>().material;
-        
-        // TODO Subscribe to global event bus for state changes for colors
+
         EventBus.Subscribe<PlayerFound>(OnPlayerFound);
         EventBus.Subscribe<PlayerLost>(OnPlayerLost);
         EventBus.Subscribe<PlayerMoving>(OnPlayerMoving);
         EventBus.Subscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Subscribe<AttackingPlayer>(OnAttackingPlayer);
-    }
 
-    private void OnDestroy()
-    {
-        EventBus.Unsubscribe<PlayerFound>(OnPlayerFound);
-        EventBus.Unsubscribe<PlayerLost>(OnPlayerLost);
-        EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
-        EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Unsubscribe<AttackingPlayer>(OnAttackingPlayer);
+        EventBus.Subscribe<CanAttackPlayer>(OnAttackingPlayer);
     }
 
     private void OnDisable()
@@ -35,8 +23,18 @@ public class MaterialColorizer : MonoBehaviour
         EventBus.Unsubscribe<PlayerLost>(OnPlayerLost);
         EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
         EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Unsubscribe<AttackingPlayer>(OnAttackingPlayer);
+
+        EventBus.Unsubscribe<CanAttackPlayer>(OnAttackingPlayer);
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<PlayerFound>(OnPlayerFound);
+        EventBus.Unsubscribe<PlayerLost>(OnPlayerLost);
+        EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
+        EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
+
+        EventBus.Unsubscribe<CanAttackPlayer>(OnAttackingPlayer);
     }
 
     private void OnPlayerFound(PlayerFound player)
@@ -51,7 +49,7 @@ public class MaterialColorizer : MonoBehaviour
         Debug.Log("setting color to blue - OnPlayerLost");
     }
 
-    private void OnAttackingPlayer(AttackingPlayer player)
+    private void OnAttackingPlayer(CanAttackPlayer player)
     {
         _shader.SetColor(DisplayColor, Color.red);
         Debug.Log("OnPlayerFound - setting color to red");
@@ -66,5 +64,4 @@ public class MaterialColorizer : MonoBehaviour
     {
         _shader.SetColor(DisplayColor, Color.cyan);
     }
-
 }

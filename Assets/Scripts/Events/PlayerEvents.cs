@@ -21,9 +21,9 @@ public struct PlayerDead
 }
 
 // happening to player
-public class AttackingPlayer
+public class CanAttackPlayer
 {
-    public AttackingPlayer(Enemy attacker)
+    public CanAttackPlayer(Enemy attacker)
     {
         Attacker = attacker;
     }

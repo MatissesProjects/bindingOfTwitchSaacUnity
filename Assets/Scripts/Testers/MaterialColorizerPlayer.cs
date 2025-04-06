@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MaterialColorizerPlayer : MonoBehaviour
@@ -9,31 +8,30 @@ public class MaterialColorizerPlayer : MonoBehaviour
     private void Start()
     {
         _shader = GetComponent<Renderer>().material;
-        
-        // TODO Subscribe to global event bus for state changes for colors
+
         EventBus.Subscribe<PlayerMoving>(OnPlayerMoving);
         EventBus.Subscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Subscribe<AttackingPlayer>(OnAttackingPlayer);
-    }
 
-    private void OnDestroy()
-    {
-        EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
-        EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Unsubscribe<AttackingPlayer>(OnAttackingPlayer);
+        EventBus.Subscribe<CanAttackPlayer>(OnAttackingPlayer);
     }
 
     private void OnDisable()
     {
         EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
         EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
-        
-        EventBus.Unsubscribe<AttackingPlayer>(OnAttackingPlayer);
+
+        EventBus.Unsubscribe<CanAttackPlayer>(OnAttackingPlayer);
     }
 
-    private void OnAttackingPlayer(AttackingPlayer player)
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<PlayerMoving>(OnPlayerMoving);
+        EventBus.Unsubscribe<PlayerStoppedMoving>(OnPlayerStopMoving);
+
+        EventBus.Unsubscribe<CanAttackPlayer>(OnAttackingPlayer);
+    }
+
+    private void OnAttackingPlayer(CanAttackPlayer player)
     {
         _shader.SetColor(DisplayColor, Color.red);
         // Debug.Log("OnPlayerFound - setting color to red");
@@ -48,5 +46,4 @@ public class MaterialColorizerPlayer : MonoBehaviour
     {
         _shader.SetColor(DisplayColor, Color.cyan);
     }
-
 }
