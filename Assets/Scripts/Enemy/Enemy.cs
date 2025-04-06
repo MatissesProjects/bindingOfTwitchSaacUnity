@@ -3,7 +3,7 @@
 public class Enemy : Character
 {
     [SerializeField] //
-    private float _speed, _baseAttackDamage, _attackCooldown;
+    private float _speed, _baseAttackDamage, _attackCooldown, maxHealth;
 
     private float nextAttackTime;
 

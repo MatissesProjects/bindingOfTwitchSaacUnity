@@ -10,12 +10,14 @@
 
 public class DamageEnemy
 {
-    public DamageEnemy(float damage)
+    public DamageEnemy(Enemy enemy, float damage)
     {
         Damage = damage;
+        AttackingEnemy = enemy;
     }
 
     public float Damage { get; }
+    public Enemy AttackingEnemy { get; }
 }
 
 public struct CanAttackEnemy

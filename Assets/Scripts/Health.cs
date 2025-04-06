@@ -3,12 +3,20 @@
 public class Health : MonoBehaviour
 {
     [SerializeField] //
-    private float health, maxHealth;
+    private float health;
+
+    private float maxHealth;
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         CheckIsDead();
+    }
+
+    public void SetMaxHealth(float h)
+    {
+        maxHealth = h;
+        health = h;
     }
 
     private void CheckIsDead()
