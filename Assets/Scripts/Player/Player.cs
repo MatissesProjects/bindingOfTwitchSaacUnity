@@ -10,18 +10,21 @@ public class Player : Character
     private void Start()
     {
         EventBus.Subscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Subscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
         EventBus.Subscribe<PlayerDead>(OnPlayerDead);
     }
 
     private void OnDisable()
     {
         EventBus.Unsubscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Unsubscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
         EventBus.Unsubscribe<PlayerDead>(OnPlayerDead);
     }
 
     private void OnDestroy()
     {
         EventBus.Unsubscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Unsubscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
         EventBus.Unsubscribe<PlayerDead>(OnPlayerDead);
     }
 
@@ -34,6 +37,11 @@ public class Player : Character
     private void OnDamagePlayer(DamagePlayer damagePlayer)
     {
         GetComponent<Health>().TakeDamage(damagePlayer.Damage);
+    }
+
+    private void OnIncreasePlayerHealth(IncreasePlayerHealth _)
+    {
+        GetComponent<Health>().HealOne();
     }
 
     public float GetDamage()

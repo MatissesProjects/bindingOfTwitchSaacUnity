@@ -20,6 +20,10 @@ public struct PlayerDead
 {
 }
 
+public struct IncreasePlayerHealth
+{
+}
+
 // happening to player
 public class CanAttackPlayer
 {

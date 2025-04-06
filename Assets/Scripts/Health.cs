@@ -18,10 +18,21 @@ public class Health : MonoBehaviour
         CheckIsDead();
     }
 
+    public void HealOne()
+    {
+        health += 1;
+    }
+
     [ContextMenu("Take 1 Damage")]
     public void Take1Damage()
     {
         EventBus.Raise(new DamagePlayer(1));
+    }
+
+    [ContextMenu("Gain 1 Health")]
+    public void Gain1Health()
+    {
+        EventBus.Raise(new IncreasePlayerHealth());
     }
 
     public void SetMaxHealth(float h)

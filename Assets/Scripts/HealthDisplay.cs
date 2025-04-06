@@ -8,35 +8,48 @@ public class HealthDisplay : MonoBehaviour
     public GameObject healthPrefab;
     public List<GameObject> healthImages;
 
+    private Player _player;
+
     private void Start()
     {
+        _player = GetComponentInParent<Player>();
         var health = GetComponentInParent<Health>().GetCurrentHealth();
         Debug.Log("current health " + health);
         for (var i = 0; i < health; i++)
             healthImages.Add(Instantiate(healthPrefab, transform.position, Quaternion.identity, transform));
         EventBus.Subscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Subscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
     }
 
     private void OnDisable()
     {
         EventBus.Unsubscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Unsubscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
     }
 
     private void OnDestroy()
     {
         EventBus.Unsubscribe<DamagePlayer>(OnDamagePlayer);
+        EventBus.Unsubscribe<IncreasePlayerHealth>(OnIncreasePlayerHealth);
+    }
+
+    private void OnIncreasePlayerHealth(IncreasePlayerHealth _)
+    {
+        var healthData = GetComponentInParent<Health>();
+        // healthData.TakeDamage(damagePlayer.Damage);
+        var index = (int)Mathf.Clamp(healthData.GetMaxHealth() - healthData.GetCurrentHealth(), 1,
+            healthData.GetMaxHealth() - 1) - 1;
+        Debug.Log(index);
+        healthImages[index].GetComponent<Image>().color = Color.red;
     }
 
     private void OnDamagePlayer(DamagePlayer damagePlayer)
     {
         var healthData = GetComponentInParent<Health>();
-        Debug.Log(healthData.GetCurrentHealth());
-        Debug.Log(damagePlayer.Damage);
-        Debug.Log(healthData.GetCurrentHealth() - damagePlayer.Damage);
         // healthData.TakeDamage(damagePlayer.Damage);
-        var index = (int)(healthData.GetMaxHealth() - healthData.GetCurrentHealth());
+        var index = (int)Mathf.Clamp(healthData.GetMaxHealth() - healthData.GetCurrentHealth(), 0,
+            healthData.GetMaxHealth() - 1);
         Debug.Log(index);
-        Debug.Log(healthData.GetMaxHealth());
         healthImages[index].GetComponent<Image>().color = Color.grey;
     }
 }
