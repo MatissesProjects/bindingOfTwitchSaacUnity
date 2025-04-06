@@ -16,6 +16,10 @@ public struct PlayerStoppedMoving
 {
 }
 
+public struct PlayerDead
+{
+}
+
 // happening to player
 public class AttackingPlayer
 {
@@ -24,5 +28,15 @@ public class AttackingPlayer
         Attacker = attacker;
     }
 
-    public Enemy Attacker { get; private set; }
+    public Enemy Attacker { get; }
+}
+
+public class DamagePlayer
+{
+    public DamagePlayer(float damage)
+    {
+        Damage = damage;
+    }
+
+    public float Damage { get; }
 }

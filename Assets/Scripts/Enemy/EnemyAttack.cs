@@ -4,7 +4,6 @@ public class EnemyAttack : MonoBehaviour
 {
     private void Start()
     {
-        // TODO Subscribe to global event bus for state changes for colors
         EventBus.Subscribe<AttackingPlayer>(OnAttackingPlayer);
     }
 
@@ -18,9 +17,9 @@ public class EnemyAttack : MonoBehaviour
         EventBus.Unsubscribe<AttackingPlayer>(OnAttackingPlayer);
     }
 
-    private void OnAttackingPlayer(AttackingPlayer player)
+    private void OnAttackingPlayer(AttackingPlayer enemy)
     {
-        Debug.Log("attacking player");
-        // TODO find out how much damage we do to the player
+        Debug.Log("attacking player with damage " + enemy.Attacker.GetDamage());
+        EventBus.Raise(new DamagePlayer(enemy.Attacker.GetDamage()));
     }
 }

@@ -81,7 +81,10 @@ public class EnemyMovement : MonoBehaviour
         {
             // TODO attack?
             Debug.Log("attacking time?");
-            EventBus.Raise(new AttackingPlayer(GetComponent<Enemy>()));
+            // TODO only attack when we should, enemy attack cooldown check needed
+            var enemy = GetComponent<Enemy>();
+            //enemy.GetAttackCooldown() // check if we should attack, then raise the event if we should
+            EventBus.Raise(new AttackingPlayer(enemy));
         }
     }
 
