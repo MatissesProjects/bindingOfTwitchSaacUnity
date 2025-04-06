@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxEnemies: 4
+  maxEnemies: 2
   enemy: {fileID: 2555388897320217227, guid: 1688c55558d259b4ead82758d37f4371, type: 3}
 --- !u!4 &1378546122 stripped
 Transform:
@@ -489,6 +489,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7531592238044651464, guid: a6c9b047af61b604fbc8cf8946827447, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518506444459317198, guid: a6c9b047af61b604fbc8cf8946827447, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518506444459317198, guid: a6c9b047af61b604fbc8cf8946827447, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518506444459317198, guid: a6c9b047af61b604fbc8cf8946827447, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518506444459317198, guid: a6c9b047af61b604fbc8cf8946827447, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

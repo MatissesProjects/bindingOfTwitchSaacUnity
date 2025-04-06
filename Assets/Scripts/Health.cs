@@ -7,16 +7,37 @@ public class Health : MonoBehaviour
 
     private float maxHealth;
 
+    private void Start()
+    {
+        maxHealth = health;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
         CheckIsDead();
     }
 
+    [ContextMenu("Take 1 Damage")]
+    public void Take1Damage()
+    {
+        EventBus.Raise(new DamagePlayer(1));
+    }
+
     public void SetMaxHealth(float h)
     {
         maxHealth = h;
         health = h;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     private void CheckIsDead()

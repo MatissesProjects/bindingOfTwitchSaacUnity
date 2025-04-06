@@ -79,8 +79,10 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            var enemy = GetComponent<Enemy>();
-            EventBus.Raise(new CanAttackPlayer(enemy));
+            if (TryGetComponent(out Enemy enemy))
+                EventBus.Raise(new CanAttackPlayer(enemy));
+            else
+                Debug.Log("enemy was not found in component");
         }
     }
 
