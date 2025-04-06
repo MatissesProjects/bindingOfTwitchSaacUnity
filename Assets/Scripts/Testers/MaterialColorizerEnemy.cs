@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MaterialColorizer : MonoBehaviour
+public class MaterialColorizerEnemy : MonoBehaviour
 {
     private static readonly int DisplayColor = Shader.PropertyToID("_displayColor");
     private Material _shader;
@@ -13,6 +13,7 @@ public class MaterialColorizer : MonoBehaviour
         // TODO Subscribe to global event bus for state changes for colors
         EventBus.Subscribe<PlayerFound>(OnPlayerFound);
         EventBus.Subscribe<PlayerLost>(OnPlayerLost);
+        
         EventBus.Subscribe<AttackingPlayer>(OnAttackingPlayer);
     }
 
@@ -47,5 +48,4 @@ public class MaterialColorizer : MonoBehaviour
         _shader.SetColor(DisplayColor, Color.red);
         Debug.Log("OnPlayerFound - setting color to red");
     }
-
 }

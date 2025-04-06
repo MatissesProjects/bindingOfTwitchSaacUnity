@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 _movement;
+    private bool triggeredStopMoved, triggeredPlayerMoved;
 
     private void Start()
     {
@@ -22,7 +23,22 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player
-        rb.MovePosition(rb.position + _movement * (moveSpeed * Time.fixedDeltaTime));
+        if (_movement.magnitude > 0)
+        {
+            rb.MovePosition(rb.position + _movement * (moveSpeed * Time.fixedDeltaTime));
+            if (!triggeredPlayerMoved)
+            {
+                EventBus.Raise(new PlayerMoving());
+                triggeredPlayerMoved = true;
+            }
+            triggeredStopMoved = false;
+        }
+        else if (!triggeredStopMoved)
+        {
+            EventBus.Raise(new PlayerStoppedMoving());
+            triggeredStopMoved = true;
+            triggeredPlayerMoved = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -214,7 +214,9 @@ GameObject:
   - component: {fileID: 331928440}
   - component: {fileID: 331928439}
   - component: {fileID: 331928442}
+  - component: {fileID: 331928445}
   - component: {fileID: 331928443}
+  - component: {fileID: 331928444}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -422,6 +424,32 @@ MonoBehaviour:
   maxY: 3
   closeEnoughDistance: 0.2
   stopDistance: 1.5
+--- !u!114 &331928444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331928437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745488a7b4e14bff9e9de44d8dcbaf25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
+--- !u!114 &331928445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331928437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e8ec8563cd466aa1491d0adcb2c20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &392600947
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +542,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -535,7 +563,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 392600947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5cd72b2bf03ea14da032f0a7309418c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fad6e1ff6099a94497f7039955f9211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &499299510
@@ -983,6 +1011,7 @@ GameObject:
   - component: {fileID: 1142437436}
   - component: {fileID: 1142437438}
   - component: {fileID: 1142437437}
+  - component: {fileID: 1142437439}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1043,7 +1072,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3654b7c21e0c5d74fb5d542095456fe6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1063,7 +1092,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1075,6 +1104,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1142437439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142437435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eecaaf773060984bb356d61bf073500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1378546121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1128,9 @@ GameObject:
   - component: {fileID: 1378546124}
   - component: {fileID: 1378546125}
   - component: {fileID: 1378546126}
+  - component: {fileID: 1378546128}
   - component: {fileID: 1378546123}
+  - component: {fileID: 1378546127}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1253,6 +1296,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1378546127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378546121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745488a7b4e14bff9e9de44d8dcbaf25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  maxHealth: 5
+--- !u!114 &1378546128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378546121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f7d14633da82e419b6dd5092586f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470049150
 GameObject:
   m_ObjectHideFlags: 0

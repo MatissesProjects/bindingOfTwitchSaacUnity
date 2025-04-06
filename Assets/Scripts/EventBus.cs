@@ -63,9 +63,9 @@ public static class EventBus
             {
                 try
                 {
-#if UNITY_EDITOR
-                    Debug.Log($"[EventBus] Raising event: {eventType}");
-#endif
+// #if UNITY_EDITOR
+//                     Debug.Log($"[EventBus] Raising event: {eventType}");
+// #endif
                     callback?.Invoke(eventData);
                 }
                 catch (Exception e)
