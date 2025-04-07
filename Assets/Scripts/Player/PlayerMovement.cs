@@ -46,5 +46,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         print(other.gameObject.name);
+        if (other.gameObject.name.Contains("Door")) EventBus.Raise(new PlayerTouchedDoor(other.gameObject));
     }
 }

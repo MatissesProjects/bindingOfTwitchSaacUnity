@@ -44,3 +44,13 @@ public class DamagePlayer
 
     public float Damage { get; }
 }
+
+public class PlayerTouchedDoor
+{
+    public PlayerTouchedDoor(Door door)
+    {
+        Door = door;
+    }
+
+    public Door Door { get; }
+}

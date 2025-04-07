@@ -32,13 +32,13 @@ public class MaterialColorizerEnemy : MonoBehaviour
     private void OnPlayerFound(PlayerFound player)
     {
         _shader.SetColor(DisplayColor, Color.green);
-        Debug.Log("setting color to green - OnPlayerFound");
+        // Debug.Log("setting color to green - OnPlayerFound");
     }
 
     private void OnPlayerLost(PlayerLost player)
     {
         _shader.SetColor(DisplayColor, Color.blue);
-        Debug.Log("setting color to blue - OnPlayerLost");
+        // Debug.Log("setting color to blue - OnPlayerLost");
     }
 
     private void OnAttackingPlayer(CanAttackPlayer player)

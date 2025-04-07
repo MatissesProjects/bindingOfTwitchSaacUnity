@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            Debug.Log("adding an enemy");
+            // Debug.Log("adding an enemy");
             _enemies.Add(enemy);
         }
     }
